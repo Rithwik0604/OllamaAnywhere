@@ -30,10 +30,9 @@ class Models(SQLModel, table=True):
 
 class Chats(SQLModel, table=True):
     id: int | None = Field(default=None, primary_key=True)
-    session_id: int = Field(default=None, foreign_key="users.id")
-    model_id: int = Field(default=None, foreign_key="users.id")
-    message: str = Field()
-    reply: str | None = Field(default=None)
+    user_id: int = Field(default=None, foreign_key="users.id")
+    model_id: int = Field(default=None, foreign_key="models.id")
+    file: str = Field(nullable=False)
     timestamp: datetime = Field(default_factory=timestamp_now)
 
 
